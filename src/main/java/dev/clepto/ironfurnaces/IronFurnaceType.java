@@ -1,11 +1,11 @@
 package dev.clepto.ironfurnaces;
 
-import dev.clepto.ironfurnaces.blocks.BlockCustomFurnace;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import dev.clepto.ironfurnaces.blocks.BlockCustomFurnace;
 import dev.clepto.ironfurnaces.tileentities.TileEntityCrystalFurnace;
 import dev.clepto.ironfurnaces.tileentities.TileEntityDiamondFurnace;
 import dev.clepto.ironfurnaces.tileentities.TileEntityGoldFurnace;
@@ -61,15 +61,20 @@ public enum IronFurnaceType {
     public static BlockCustomFurnace getBlockForType(IronFurnaceType type, boolean isActive) {
         switch (type) {
             case IRON:
-                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.IronFurnaceActive : IronFurnacesBlocks.IronFurnaceIdle);
+                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.IronFurnaceActive
+                    : IronFurnacesBlocks.IronFurnaceIdle);
             case GOLD:
-                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.GoldFurnaceActive : IronFurnacesBlocks.GoldFurnaceIdle);
+                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.GoldFurnaceActive
+                    : IronFurnacesBlocks.GoldFurnaceIdle);
             case DIAMOND:
-                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.DiamondFurnaceActive : IronFurnacesBlocks.DiamondFurnaceIdle);
+                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.DiamondFurnaceActive
+                    : IronFurnacesBlocks.DiamondFurnaceIdle);
             case CRYSTAL:
-                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.CrystalFurnaceActive : IronFurnacesBlocks.CrystalFurnaceIdle);
+                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.CrystalFurnaceActive
+                    : IronFurnacesBlocks.CrystalFurnaceIdle);
             case OBSIDIAN:
-                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.ObsidianFurnaceActive : IronFurnacesBlocks.ObsidianFurnaceIdle);
+                return (BlockCustomFurnace) (isActive ? IronFurnacesBlocks.ObsidianFurnaceActive
+                    : IronFurnacesBlocks.ObsidianFurnaceIdle);
             default:
                 return null;
         }

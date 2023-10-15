@@ -1,17 +1,15 @@
 package dev.clepto.ironfurnaces.blocks;
 
-import cpw.mods.fml.relauncher.SideOnly;
-import cpw.mods.fml.relauncher.Side;
-import dev.clepto.ironfurnaces.IronFurnaceType;
-import dev.clepto.ironfurnaces.IronFurnacesBlocks;
-import dev.clepto.ironfurnaces.tileentities.TileEntityIronFurnace;
+import static net.minecraftforge.common.util.ForgeDirection.DOWN;
+import static net.minecraftforge.common.util.ForgeDirection.UP;
+
+import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -19,11 +17,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import java.util.List;
-import java.util.Random;
-
-import static net.minecraftforge.common.util.ForgeDirection.DOWN;
-import static net.minecraftforge.common.util.ForgeDirection.UP;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import dev.clepto.ironfurnaces.IronFurnaceType;
+import dev.clepto.ironfurnaces.tileentities.TileEntityIronFurnace;
 
 public abstract class BlockCustomFurnace extends BlockContainer {
 
@@ -45,7 +42,9 @@ public abstract class BlockCustomFurnace extends BlockContainer {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World w, int i) { return null; }
+    public TileEntity createNewTileEntity(World w, int i) {
+        return null;
+    }
 
     @Override
     public boolean isOpaqueCube() {
@@ -116,7 +115,7 @@ public abstract class BlockCustomFurnace extends BlockContainer {
 
     @Override
     public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX,
-                                        double explosionY, double explosionZ) {
+        double explosionY, double explosionZ) {
         if (type.isExplosionResistant()) {
             return 10000f;
         }
@@ -130,7 +129,8 @@ public abstract class BlockCustomFurnace extends BlockContainer {
         return validRotationAxes;
     }
 
-    public static void updateCustomFurnaceBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord) {
+    public static void updateCustomFurnaceBlockState(boolean active, World worldObj, int xCoord, int yCoord,
+        int zCoord) {
         int i = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
         TileEntity te = worldObj.getTileEntity(xCoord, yCoord, zCoord);
         if (te == null) {

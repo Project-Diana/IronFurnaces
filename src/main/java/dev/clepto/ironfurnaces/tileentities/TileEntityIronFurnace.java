@@ -1,6 +1,5 @@
 package dev.clepto.ironfurnaces.tileentities;
 
-import dev.clepto.ironfurnaces.blocks.BlockCustomFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,6 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import dev.clepto.ironfurnaces.IronFurnaceType;
+import dev.clepto.ironfurnaces.blocks.BlockCustomFurnace;
 
 public class TileEntityIronFurnace extends TileEntity implements ISidedInventory {
 
@@ -188,7 +188,12 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
             }
             if (flag != isBurning()) {
                 flag2 = true;
-                BlockCustomFurnace.updateCustomFurnaceBlockState((this.burnTime > 0), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                BlockCustomFurnace.updateCustomFurnaceBlockState(
+                    (this.burnTime > 0),
+                    this.worldObj,
+                    this.xCoord,
+                    this.yCoord,
+                    this.zCoord);
             }
         }
         if (flag2) markDirty();
