@@ -1,0 +1,3 @@
+# Iron Furnaces
+
+This is a revival of [Iron Furnaces](https://www.curseforge.com/minecraft/mc-mods/iron-furnaces) for Minecraft 1.7.10. It is partially made from decompiled source of Iron Furnaces, but also contains a lot of the technique used in [IronChest](https://github.com/GTNewHorizons/IronChest) since it serves a very similar purpose, as well as some new somewhat improved handling for the blocks and probably some new features at some point.

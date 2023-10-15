@@ -1,0 +1,12 @@
+tile.IronFurnaceActive.name=Iron Furnace
+tile.IronFurnaceIdle.name=Iron Furnace
+tile.GoldFurnaceActive.name=Gold Furnace
+tile.GoldFurnaceIdle.name=Gold Furnace
+tile.DiamondFurnaceActive.name=Diamond Furnace
+tile.DiamondFurnaceIdle.name=Diamond Furnace
+tile.ObsidianFurnaceActive.name=Obsidian Furnace
+tile.ObsidianFurnaceIdle.name=Obsidian Furnace
+tile.CrystalFurnaceActive.name=Crystal Furnace
+tile.CrystalFurnaceIdle.name=Crystal Furnace
+
+itemGroup.Ironfurnace=Iron Furnaces
