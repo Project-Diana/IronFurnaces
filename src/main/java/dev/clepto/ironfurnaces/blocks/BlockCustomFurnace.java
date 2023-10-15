@@ -5,12 +5,16 @@ import static net.minecraftforge.common.util.ForgeDirection.UP;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
@@ -29,9 +33,11 @@ public abstract class BlockCustomFurnace extends BlockContainer {
     @SideOnly(Side.CLIENT)
     private IIcon[][] icons;
 
-    private static boolean keepInventory;
+    private static boolean keepInventory = false;
 
     private final boolean isActive;
+
+    private Random random;
 
     public BlockCustomFurnace(IronFurnaceType type, boolean isActive) {
         super(Material.iron);
@@ -39,6 +45,7 @@ public abstract class BlockCustomFurnace extends BlockContainer {
         setHardness(3.0F);
         setHarvestLevel("pickaxe", 1);
         this.isActive = isActive;
+        this.random = new Random();
     }
 
     @Override
@@ -84,6 +91,53 @@ public abstract class BlockCustomFurnace extends BlockContainer {
         if (facing == 3) {
             world.setBlockMetadataWithNotify(x, y, z, 4, 2);
         }
+    }
+
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block oldBlock, int oldMetadata) {
+        if (!keepInventory) {
+            TileEntityIronFurnace teif = (TileEntityIronFurnace) world.getTileEntity(x, y, z);
+            if (teif != null) {
+                for (int i = 0; i < teif.getSizeInventory(); i++) {
+                    ItemStack itemStack = teif.getStackInSlot(i);
+                    if (itemStack != null) {
+                        float f = this.random.nextFloat() * 0.8F + 0.1F;
+                        float f2 = this.random.nextFloat() * 0.8F + 0.1F;
+                        float f3 = this.random.nextFloat() * 0.8F + 0.1F;
+                        while (itemStack.stackSize > 0) {
+                            int j = this.random.nextInt(21) + 10;
+                            if (j > itemStack.stackSize) j = itemStack.stackSize;
+                            ItemStack itemStack1 = itemStack;
+                            itemStack1.stackSize -= j;
+                            EntityItem item = new EntityItem(
+                                world,
+                                (x + f),
+                                (y + f2),
+                                (z + f3),
+                                new ItemStack(itemStack.getItem(), j, itemStack.getItemDamage()));
+                            if (itemStack.hasTagCompound()) item.getEntityItem()
+                                .setTagCompound(
+                                    (NBTTagCompound) itemStack.getTagCompound()
+                                        .copy());
+                            world.spawnEntityInWorld((Entity) item);
+                        }
+                    }
+                }
+                // updateNeighborsAboutBlockChange
+                world.func_147453_f(x, y, z, oldBlock);
+            }
+        }
+        super.breakBlock(world, x, y, z, oldBlock, oldMetadata);
+    }
+
+    @Override
+    public Item getItem(World world, int x, int y, int z) {
+        return Item.getItemFromBlock(IronFurnaceType.getBlockForType(this.type, false));
+    }
+
+    @Override
+    public Item getItemDropped(int i, Random random, int j) {
+        return Item.getItemFromBlock(IronFurnaceType.getBlockForType(this.type, false));
     }
 
     @Override
