@@ -14,7 +14,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import dev.clepto.ironfurnaces.gui.GuiHandler;
 
 @Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.7.10]")
 public class IronFurnaces {
@@ -45,6 +47,7 @@ public class IronFurnaces {
             GameRegistry.registerTileEntityWithAlternatives(type.clazz, "IronFurnace." + type.name(), type.name());
         }
         OreDictionary.registerOre("stone_furnace", Blocks.furnace);
+        NetworkRegistry.INSTANCE.registerGuiHandler("ironfurnaces", new GuiHandler());
     }
 
     @Mod.EventHandler
