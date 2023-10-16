@@ -67,11 +67,11 @@ public class IronFurnacesBlocks {
                 IronFurnaceIdle });
         GameRegistry.addShapedRecipe(
             new ItemStack(DiamondFurnaceIdle, 1),
-            new Object[] { "GGG", "DgD", "GGG", Character.valueOf('G'), Blocks.glass, Character.valueOf('g'),
+            new Object[] { "GDG", "DgD", "GDG", Character.valueOf('G'), Blocks.glass, Character.valueOf('g'),
                 GoldFurnaceIdle, Character.valueOf('D'), Items.diamond });
         GameRegistry.addShapedRecipe(
             new ItemStack(ObsidianFurnaceIdle, 1),
-            new Object[] { " O ", "OdO", " O ", Character.valueOf('d'), DiamondFurnaceIdle, Character.valueOf('O'),
+            new Object[] { "OOO", "OdO", "OOO", Character.valueOf('d'), DiamondFurnaceIdle, Character.valueOf('O'),
                 Blocks.obsidian });
         GameRegistry.addRecipe(
             (IRecipe) new ShapedOreRecipe(
