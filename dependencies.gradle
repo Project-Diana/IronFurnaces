@@ -34,5 +34,6 @@
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
-    api "com.github.GTNewHorizons:NotEnoughItems:2.4.4-GTNH:dev"
+    api "com.github.GTNewHorizons:NotEnoughIds:2.0.3:dev"
+    compileOnly "com.github.GTNewHorizons:NotEnoughItems:2.5.21-GTNH:dev"
 }

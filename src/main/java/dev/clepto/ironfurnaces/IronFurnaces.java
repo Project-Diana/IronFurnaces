@@ -18,8 +18,15 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import dev.clepto.ironfurnaces.gui.GuiHandler;
 
-@Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.7.10]")
+@Mod(
+    modid = IronFurnaces.MODID,
+    version = Tags.VERSION,
+    name = "Iron Furnaces",
+    acceptedMinecraftVersions = "[1.7.10]",
+    dependencies = "required-after:notenoughids@[2.0.0,);")
 public class IronFurnaces {
+
+    public static final String MODID = "ironfurnaces";
 
     public static final Logger LOG = LogManager.getLogger(Tags.MODID);
 
